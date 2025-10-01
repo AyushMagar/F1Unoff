@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>F1 FanClub - 2025 Results</title>
+  <link rel="icon" type="image/png" href="mainlogo.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Roboto+Condensed:wght@400;500&family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #f5f5f5;
+    }
+
+    /* Header / Navigation */
+    header {
+      background: linear-gradient(90deg, #0a0a0f 0%, #121217 50%, #0a0a0f 100%);
+      border-bottom: 2px solid #e10600;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container img {
+      max-height: 170px;
+      width: auto;
+      display: block;
+    }
+
+    nav {
+      margin-left: 3rem;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      position: relative;
+      cursor: pointer;
+    }
+
+    nav ul li i {
+      font-size: 12px;
+      margin-left: 0.25rem;
+    }
+
+    nav ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1a1a1a;
+      border: 1px solid #e10600;
+      border-radius: 6px;
+      padding: 0.5rem 0;
+      list-style: none;
+      min-width: 180px;
+      z-index: 1000;
+    }
+
+    nav ul li .dropdown li {
+      padding: 0.5rem 1rem;
+      color: #fff;
+    }
+
+    nav ul li .dropdown li:hover {
+      background: #e10600;
+    }
+
+    nav ul li:hover .dropdown {
+      display: block;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-left: auto;
+    }
+
+    .auth-buttons .btn {
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 20px;
+      border: none;
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .signin-btn {
+      background: transparent;
+      color: #e10600;
+      border: 2px solid #e10600;
+    }
+    .signin-btn:hover {
+      background: #e10600;
+      color: #fff;
+    }
+    .signup-btn {
+      background: #e10600;
+      color: #fff;
+    }
+    .signup-btn:hover {
+      background: #b50500;
+    }
+
+    /* Table Styles */
+    main {
+      padding: 2rem 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: #e10600;
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 95%;
+      max-width: 1400px;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(225,6,0,0.6);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      font-size: 1.2rem;
+    }
+
+    table.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    thead {
+      background: #e10600;
+      color: #fff;
+    }
+
+    thead th {
+      padding: 1.5rem 1rem;
+      text-transform: uppercase;
+    }
+
+    tbody tr {
+      background: #1a1a1a;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #222;
+    }
+
+    tbody tr:hover {
+      background: #e10600;
+      color: #fff;
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+
+    tbody td {
+      padding: 1.2rem 1rem;
+      vertical-align: middle;
+    }
+
+    .flag {
+      width: 36px;
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      table, thead th, tbody td { font-size: 1rem; padding: 0.8rem; }
+      h1 { font-size: 2rem; }
+      .flag { width: 28px; height: 18px; margin-right: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="mainlogo.png" alt="F1 Logo" class="logo" onclick="location.href='landingpage.html'"/>
+    </div>
+    <nav>                     
+      <ul>
+        <li>
+          Schedule <i class="fas fa-caret-down"></i>
+          <ul class="dropdown">
+            <li onclick="location.href='2026.html'">Upcomming 2026 Race Calendar</li>
+            <li onclick="location.href='past.html'">Past Results</li>
+          </ul>
+        </li>
+        <li onclick="location.href='Result.html'">
+          Standings
+          
+        </li>
+        <li onclick="location.href='news.html'">
+          News 
+        </li>
+        <li onclick="location.href='drivers.html'">
+          Drivers
+        <li>
+          Teams 
+        </li>
+        
+      </ul>
+      <div class="auth-buttons">
+        <button onclick="location.href='Login.html'" class="btn signin-btn">Log In</button>
+        <button onclick="location.href='Signup.html'" class="btn signup-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <h1>2025 F1 Drivers' Championship</h1>
+
+    <table id="drivers-table">
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Driver</th>
+          <th>Country</th>
+          <th>Team</th>
+          <th>Points</th>
+          <th>Wins</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Max Verstappen</td>
+          <td><img src="netherlands-flag-icon.png" class="flag">Netherlands</td>
+          <td>Red Bull Racing</td>
+          <td>387</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Lewis Hamilton</td>
+          <td><img src="united-kingdom-flag-icon.png" class="flag">United Kingdom</td>
+          <td>Mercedes</td>
+          <td>320</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Charles Leclerc</td>
+          <td><img src="monaco-flag-icon.png" class="flag">Monaco</td>
+          <td>Ferrari</td>
+          <td>275</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lando Norris</td>
+          <td><img src="united-kingdom-flag-icon.png" class="flag">United Kingdom</td>
+          <td>McLaren</td>
+          <td>185</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Sergio Pérez</td>
+          <td><img src="mexico-flag-icon.png" class="flag">Mexico</td>
+          <td>Red Bull Racing</td>
+          <td>170</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Carlos Sainz</td>
+          <td><img src="spain-country-flag-icon.png" class="flag">Spain</td>
+          <td>Ferrari</td>
+          <td>160</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Daniel Ricciardo</td>
+          <td><img src="australia-flag-icon.png" class="flag">Australia</td>
+          <td>McLaren</td>
+          <td>140</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Sebastian Vettel</td>
+          <td><img src="germany-flag-icon.png" class="flag">Germany</td>
+          <td>Aston Martin</td>
+          <td>120</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Esteban Ocon</td>
+          <td><img src="france-flag-icon.png" class="flag">France</td>
+          <td>Alpine</td>
+          <td>110</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>George Russell</td>
+          <td><img src="united-kingdom-flag-icon.png" class="flag">United Kingdom</td>
+          <td>Mercedes</td>
+          <td>105</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    // Animate table on load
+    window.addEventListener('load', () => {
+      document.getElementById('drivers-table').classList.add('visible');
+    });
+  </script>
+</body>
+</html>

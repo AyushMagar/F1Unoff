@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>F1 FanClub</title>
+  <link rel="icon" type="image/png" href="mainlogo.png" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Roboto+Condensed:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #f5f5f5;
+      line-height: 1.6;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #0d0d0d; 
+    }
+
+    /* Header */
+    header {
+      background: #0a0a0f;
+      border-bottom: 2px solid #e10600;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 70px;
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(90deg, #0a0a0f 0%, #121217 50%, #0a0a0f 100%);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      max-height: 170px;
+      width: auto;
+      display: block;
+    }
+
+    nav {
+      margin-left: 3rem;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: white;
+      flex-grow: 1;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: white;
+      user-select: none;
+    }
+
+    nav ul li i {
+      font-size: 12px;
+      margin-left: 0.25rem;
+      color: white;
+    }
+
+    nav ul li:last-child {
+      cursor: pointer;
+    }
+
+    /* Dropdown */
+    nav ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1a1a1a;
+      border: 1px solid #e10600;
+      border-radius: 6px;
+      padding: 0.5rem 0;
+      list-style: none;
+      min-width: 180px;
+      z-index: 1000;
+    }
+
+    nav ul li .dropdown li {
+      padding: 0.5rem 1rem;
+      color: #fff;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    nav ul li .dropdown li:hover {
+      background: #e10600;
+    }
+
+    nav ul li:hover .dropdown {
+      display: block;
+    }
+
+    /* Auth Buttons */
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-left: auto; 
+    }
+
+    .auth-buttons .btn {
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-family: 'Exo 2', sans-serif;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .auth-buttons .signin-btn {
+      background: transparent;
+      color: #e10600;
+      border: 2px solid #e10600;
+    }
+
+    .auth-buttons .signin-btn:hover {
+      background: #e10600;
+      color: #fff;
+    }
+
+    .auth-buttons .signup-btn {
+      background: #e10600;
+      color: #fff;
+    }
+
+    .auth-buttons .signup-btn:hover {
+      background: #b50500;
+    }
+
+    /* Hero */
+    .hero { 
+        background-image: url('landing.jpg');
+        background-position: center 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        filter: brightness(1.2);
+        transition: background-image 1s ease-in-out;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.50);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 0 1rem;
+      transform: translateY(-40%);
+    }
+
+    .hero h2 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero h2 span {
+      color: #e10600;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .btn {
+      background: #e10600;
+      color: #fff;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.3s;
+      font-family: 'Exo 2', sans-serif;
+    }
+
+    .btn:hover {
+      background: #b50500;
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+
+    .section h3 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 2rem;
+      color: #e10600;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h4 {
+      margin: 1rem;
+      font-size: 1.2rem;
+      color: #fff;
+      font-family: 'Exo 2', sans-serif;
+    }
+
+    .card p {
+      margin: 0 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    /* Footer */
+    footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      border-top: 2px solid #e10600;
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 0 1.5rem;
+        height: 60px;
+      }
+
+      .logo {
+        max-height: 50px;
+      }
+
+      nav ul {
+        gap: 1rem;
+        font-size: 14px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 2rem 1.5rem;
+      }
+
+      .auth-buttons {
+        gap: 0.5rem;
+      }
+
+      .auth-buttons .btn {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="mainlogo.png" alt="F1 Logo" class="logo" onclick="location.href='landingpage.html'"/>
+    </div>
+    <nav>                     
+      <ul>
+        <li>
+          Schedule <i class="fas fa-caret-down"></i>
+          <ul class="dropdown">
+            <li onclick="location.href='2026.html'">Upcomming 2026 Race Calendar</li>
+            <li onclick="location.href='past.html'">Past Results</li>
+          </ul>
+        </li>
+        <li onclick="location.href='Result.html'">
+          Standings
+          
+        </li>
+        <li onclick="location.href='news.html'">
+          News 
+        </li>
+        <li onclick="location.href='drivers.html'">
+          Drivers
+        <li>
+          Teams 
+        </li>
+      </ul>
+      <div class="auth-buttons">
+        <button onclick="location.href='Login.html'" class="btn signin-btn">Log In</button>
+        <button onclick="location.href='Signup.html'" class="btn signup-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Feel the Speed of <span>Formula 1</span></h2>
+      <p>Your ultimate hub for F1 news, drivers, and race updates.</p>
+      <button class="btn">Explore Now</button>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="section highlights">
+    <h3>Latest Highlights</h3>
+    <div class="cards">
+      <div class="card">
+        <img src="monza.png" alt="Race Action" />
+        <h4>Epic Overtakes in Monza</h4>
+        <p>Relive the adrenaline-filled moments of the Italian GP with breathtaking overtakes.</p>
+      </div>
+      <div class="card">
+        <img src="pitwall.png" alt="Team Garage" />
+        <h4>Behind the Pit Wall</h4>
+        <p>A sneak peek into the strategy and teamwork that makes F1 unique.</p>
+      </div>
+      <div class="card">
+        <img src="spot.png" alt="Driver Focus" />
+        <h4>Driver Spotlight</h4>
+        <p>Get to know your favorite drivers both on and off the track.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 F1 Fan Hub | Designed for F1 Enthusiasts</p>
+  </footer>
+
+  <script>
+    const hero = document.querySelector('.hero');
+    
+    const images = [
+      'landing1.jpg',
+      'landing2.jpg',
+      'landing3.jpg',
+      'landing4.jpg',
+      'landing5.jpg'
+    ];
+    
+    let index = 0;
+    
+    setInterval(() => {
+      index = (index + 1) % images.length; 
+      hero.style.backgroundImage = `url('${images[index]}')`;
+    }, 3000);
+  </script>
+  
+</body>
+</html>

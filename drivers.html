@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>F1 FanClub - Drivers 2025</title>
+<link rel="icon" type="image/png" href="mainlogo.png" />
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Orbitron:wght@400;500&family=Roboto+Condensed:wght@400;500&display=swap" rel="stylesheet" />
+<!-- Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+<style>
+  /* Global Reset & Body */
+  body {
+    margin: 0;
+    background-color: #0d0d0d;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #f5f5f5;
+  }
+
+  /* Header Navigation */
+  header {
+    background: linear-gradient(90deg, #0a0a0f 0%, #121217 50%, #0a0a0f 100%);
+    border-bottom: 2px solid #e10600;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 70px;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    max-height: 170px;
+    width: auto;
+    display: block;
+  }
+
+  nav {
+    margin-left: 3rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    color: white;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    user-select: none;
+  }
+
+  nav ul li i {
+    font-size: 12px;
+    margin-left: 0.25rem;
+    color: white;
+  }
+
+  nav ul li:last-child {
+    cursor: pointer;
+  }
+
+  /* Dropdown */
+  nav ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a1a;
+    border: 1px solid #e10600;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    list-style: none;
+    min-width: 180px;
+    z-index: 1000;
+  }
+
+  nav ul li .dropdown li {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  nav ul li .dropdown li:hover {
+    background: #e10600;
+  }
+
+  nav ul li:hover .dropdown {
+    display: block;
+  }
+
+  /* Auth Buttons */
+  .auth-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .auth-buttons .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-family: 'Exo 2', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .auth-buttons .signin-btn {
+    background: transparent;
+    color: #e10600;
+    border: 2px solid #e10600;
+  }
+
+  .auth-buttons .signin-btn:hover {
+    background: #e10600;
+    color: #fff;
+  }
+
+  .auth-buttons .signup-btn {
+    background: #e10600;
+    color: #fff;
+  }
+
+  .auth-buttons .signup-btn:hover {
+    background: #b50500;
+  }
+
+  /* Responsive Header */
+  @media (max-width: 768px) {
+    header {
+      padding: 0 1.5rem;
+      height: 60px;
+    }
+
+    .logo {
+      max-height: 50px;
+    }
+
+    nav ul {
+      gap: 1rem;
+      font-size: 14px;
+    }
+
+    .auth-buttons {
+      gap: 0.5rem;
+    }
+
+    .auth-buttons .btn {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* ------------ Drivers Section Styles ------------ */
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  h1.drivers-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+
+  p.drivers-desc {
+    color: #ccc;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+  }
+
+  .drivers-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  gap: 20px;
+}
+
+/* Stack 1 per row on small screens */
+@media (max-width: 480px) {
+  .drivers-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+  .driver-card {
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    gap: 30px;
+    overflow: hidden;
+    position: relative;
+    min-height: 160px;
+  }
+
+  .driver-info {
+    flex: 1;
+    z-index: 2;
+  }
+
+  .driver-name {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .driver-name strong {
+    display: block;
+    text-decoration: underline;
+  }
+
+  .driver-team {
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 10px 0 15px;
+    color: #eee;
+  }
+
+  .driver-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+    color: #e7e7e7;
+  }
+
+  .driver-image {
+  width: 190px;              /* wider than before (zoom effect) */
+  height: 240px;             /* taller crop area */
+  object-fit: cover;         /* zooms + crops */
+  object-position: center top;  /* focus on top half (head/torso) */
+  border-radius: 8px;
+  z-index: 2;
+  transform: scale(1.1);     /* extra zoom inside the frame */
+}
+.country-flag {
+  width: 60px;                 /* fixed width */
+  height: 35px;                /* adjust according to flag aspect ratio */
+  border: 2px solid white;     /* white outline */
+  border-radius: 4px;          /* rounded corners */
+  box-shadow: 0 0 4px rgba(0,0,0,0.4); /* optional */
+  object-fit: cover;           /* crop & fit image inside bounds */
+  display: inline-block;
+  box-sizing: border-box;      /* include border in width/height */
+}
+.team-logo {
+  width: 100px;       /* desired width */
+  height: auto;       /* maintain original aspect ratio */
+  object-fit: contain; /* ensures image fits inside container */
+  display: block;
+  z-index: 2;
+}
+  .mclaren {
+    background: linear-gradient(90deg, #ff6200 40%, #cd5900 100%);
+    color: white;
+  }
+
+  .mercedes {
+    background: linear-gradient(90deg, #00bfb8 40%, #028f8b 100%);
+    color: white;
+  }
+
+  .redbull {
+    background: linear-gradient(90deg, #1e5bc6 40%, #ed1c24 100%);
+    color: white;
+  }
+
+  .ferrari {
+    background: linear-gradient(90deg, #dc0000 40%, #f0122a 100%);
+    color: white;
+  }
+
+  .astonmartin {
+    background: linear-gradient(90deg, #2d7d5c 40%, #c42532 100%);
+    color: white;
+  }
+
+  .williams {
+    background: linear-gradient(90deg, #0051ba 40%, #37bedd 100%);
+    color: white;
+  }
+
+  .alpine {
+    background: linear-gradient(90deg, #0090ff 40%, #0066cc 100%);
+    color: white;
+  }
+
+  .rb {
+    background: linear-gradient(90deg, #ed1c24 40%, #1e5bc6 100%);
+    color: white;
+  }
+
+  .sauber {
+    background: linear-gradient(90deg, #ffffff 40%, #000000 100%);
+    color: #000;
+  }
+
+  .sauber .driver-name,
+  .sauber .driver-team,
+  .sauber .driver-number {
+    color: #000;
+  }
+
+  .kicksauber {
+    background: linear-gradient(90deg, #099601 40%, #585858 100%);
+    color: white;
+  }
+
+  /* Overlay pattern */
+  .driver-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    background-size: 40px 40px;
+    border-radius: 10px;
+    z-index: 1;
+  }
+
+  .mclaren::before,
+  .mercedes::before,
+  .redbull::before,
+  .ferrari::before,
+  .astonmartin::before,
+  .williams::before,
+  .alpine::before,
+  .rb::before,
+  .sauber::before,
+  .kicksauber::before {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  }
+
+  /* Responsive Drivers */
+  @media (max-width: 600px) {
+    
+  .drivers-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  gap: 20px;
+}
+
+/* Responsive for very small screens */
+@media (max-width: 480px) {
+  .drivers-container {
+    grid-template-columns: 1fr; /* stack 1 per row on very small screens */
+  }
+}
+
+
+
+    
+    .driver-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      min-height: auto;
+    }
+    .driver-image {
+      max-width: 100%;
+      width: 100%;
+      max-height: 200px;
+    }
+    .driver-number {
+  position: absolute;
+  font-size: 160px;
+  opacity: 0.08;
+  right: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <div class="logo-container">
+      <img src="mainlogo.png" alt="F1 Logo" class="logo" onclick="location.href='landingpage.html'"/>
+    </div>
+    <nav>                     
+      <ul>
+        <li>
+          Schedule <i class="fas fa-caret-down"></i>
+          <ul class="dropdown">
+            <li onclick="location.href='2026.html'">Upcomming 2026 Race Calendar</li>
+            <li onclick="location.href='past.html'">Past Results</li>
+          </ul>
+        </li>
+        <li onclick="location.href='Result.html'">
+          Standings
+          
+        </li>
+        <li onclick="location.href='news.html'">
+          News 
+        </li>
+        <li onclick="location.href='drivers.html'">
+          Drivers
+        <li>
+          Teams 
+        </li>
+        
+      </ul>
+      <div class="auth-buttons">
+        <button onclick="location.href='Login.html'" class="btn signin-btn">Log In</button>
+        <button onclick="location.href='Signup.html'" class="btn signup-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENT: Drivers Section -->
+  <main>
+    <h1 class="drivers-title">F1 DRIVERS 2025</h1>
+    
+    <div class="drivers-container">
+      <!-- McLaren -->
+      <div class="driver-card mclaren">
+        <div class="driver-info"> 
+          <img src="australia-flag-icon.png" class="country-flag">   
+          <div class="driver-name">Oscar <strong>Piastri</strong></div>
+          <div class="driver-team">McLaren</div>
+          <div class="driver-number">81</div> 
+        </div>  
+        <img src="Mclaren Logo Vector Logo - Download Free SVG Icon _ Worldvectorlogo.png" class="team-logo"/>        
+        <img src="Oscar Piastri.png" alt="Oscar Piastri" class="driver-image" />
+      </div>
+      
+      <div class="driver-card mclaren">
+        <div class="driver-info">
+            <img src="united-kingdom-flag-icon.png" class="country-flag">
+          <div class="driver-name">Lando <strong>Norris</strong></div>
+          <div class="driver-team">McLaren</div>
+          <div class="driver-number">4</div>
+        </div>
+        <img src="Mclaren Logo Vector Logo - Download Free SVG Icon _ Worldvectorlogo.png" class="team-logo"/>       
+        <img src="Lando Norris.png" alt="Lando Norris" class="driver-image" />
+      </div>
+
+      <!-- Mercedes -->
+      <div class="driver-card mercedes">
+        <div class="driver-info">
+            <img src="united-kingdom-flag-icon.png" class="country-flag"> 
+          <div class="driver-name">George <strong>Russell</strong></div>
+          <div class="driver-team">Mercedes</div>
+          <div class="driver-number">63</div>
+        </div>
+        <img src="merc.png" class="team-logo"/>  
+        <img src="George Russell.png" alt="George Russell" class="driver-image" />
+      </div>
+      
+      <div class="driver-card mercedes">
+        <div class="driver-info">
+          <img src="italy-flag-icon.png" class="country-flag">
+          <div class="driver-name">Kimi <strong>Antonelli</strong></div>
+          <div class="driver-team">Mercedes</div>
+          <div class="driver-number">12</div>
+        </div>
+        <img src="merc.png" class="team-logo"/>  
+        <img src="Kimi Antonelli.png" alt="Kimi Antonelli" class="driver-image" />
+      </div>
+
+      <!-- Red Bull -->
+      <div class="driver-card redbull">
+        <div class="driver-info">
+          <img src="netherlands-flag-icon.png" class="country-flag">
+          <div class="driver-name">Max <strong>Verstappen</strong></div>
+          <div class="driver-team">Red Bull</div>
+          <div class="driver-number">01</div>
+        </div>
+        <img src="redbull.png" class="team-logo"/>  
+        <img src="Max Verstappen.png" alt="Max Verstappen" class="driver-image" />
+      </div>
+      <div class="driver-card rb">
+        <div class="driver-info">
+          <img src="japan-flag-icon.png" class="country-flag">
+          <div class="driver-name">Yuki <strong>Tsunoda</strong></div>
+          <div class="driver-team">Red Bull</div>
+          <div class="driver-number">22</div>
+        </div>
+        <img src="redbull.png" class="team-logo"/> 
+        <img src="Yuki Tsunoda.png" alt="Yuki Tsunoda" class="driver-image" />
+      </div>
+
+
+      <!-- Ferrari -->
+      <div class="driver-card ferrari">
+        <div class="driver-info">
+          <img src="monaco-flag-icon.png" class="country-flag">
+          <div class="driver-name">Charles <strong>Leclerc</strong></div>
+          <div class="driver-team">Ferrari</div>
+          <div class="driver-number">16</div>
+        </div>
+        <img src="ferrari.png" class="team-logo"/>
+        <img src="Charles Leclerc.png" alt="Charles Leclerc" class="driver-image" />
+      </div>
+
+      <div class="driver-card ferrari">
+        <div class="driver-info">
+          <img src="united-kingdom-flag-icon.png" class="country-flag">
+          <div class="driver-name">Lewis <strong>Hamilton</strong></div>
+          <div class="driver-team">Ferrari</div>
+          <div class="driver-number">44</div>
+        </div>
+        <img src="ferrari.png" class="team-logo"/>
+        <img src="Lewis Hamilton.png" alt="Lewis Hamilton" class="driver-image" />
+      </div>
+
+      <!-- Aston Martin -->
+      <div class="driver-card astonmartin">
+        <div class="driver-info">
+          <img src="spain-country-flag-icon.png" class="country-flag">
+          <div class="driver-name">Fernando <strong>Alonso</strong></div>
+          <div class="driver-team">Aston Martin</div>
+          <div class="driver-number">14</div>
+        </div>
+        <img src="am.png" class="team-logo"/>
+        <img src="Fernando Alonso.png" alt="Fernando Alonso" class="driver-image" />
+      </div>
+
+      <div class="driver-card astonmartin">
+        <div class="driver-info">
+          <img src="canada-flag-icon.png" class="country-flag">
+          <div class="driver-name">Lance <strong>Stroll</strong></div>
+          <div class="driver-team">Aston Martin</div>
+          <div class="driver-number">18</div>
+        </div>
+        <img src="am.png" class="team-logo"/>
+        <img src="Lance Stroll.png" alt="Lance Stroll" class="driver-image" />
+      </div>
+
+      <!-- Williams -->
+
+  <div class="driver-card williams">
+
+    <div class="driver-info">
+
+      <img src="thailand-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Alex <strong>Albon</strong></div>
+
+      <div class="driver-team">Williams</div>
+
+      <div class="driver-number">23</div>
+
+    </div>
+    <img src="Williams Racing Logo.png" class="team-logo"/>
+    <img src="Alexander Albon.png" alt="Alex Albon" class="driver-image" />
+
+  </div>
+
+
+  <div class="driver-card williams">
+
+    <div class="driver-info">
+
+      <img src="spain-country-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Carlos <strong>Sainz</strong></div>
+
+      <div class="driver-team">Williams</div>
+
+      <div class="driver-number">55</div>
+
+    </div>
+    <img src="Williams Racing Logo.png" class="team-logo"/>
+    <img src="Carlos Sainz.png" alt="Carlos Sainz" class="driver-image" />
+
+  </div>
+
+
+  <!-- Alpine -->
+
+  <div class="driver-card alpine">
+
+    <div class="driver-info">
+
+      <img src="france-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Pierre <strong>Gasly</strong></div>
+
+      <div class="driver-team">Alpine</div>
+
+      <div class="driver-number">10</div>
+
+    </div>
+    <img src="alpine.svg" class="team-logo"/>
+    <img src="Pierre Gasly.png" alt="Pierre Gasly" class="driver-image" />
+
+  </div>
+
+
+  <div class="driver-card alpine">
+
+    <div class="driver-info">
+
+      <img src="argentina-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Franco <strong>Colapinto</strong></div>
+
+      <div class="driver-team">Alpine</div>
+
+      <div class="driver-number">43</div>
+
+    </div>
+    <img src="alpine.svg" class="team-logo"/>
+    <img src="Franco Colapinto.png" alt="Franco Colapinto" class="driver-image" />
+
+  </div>
+
+
+  <!-- RB (Visa Cash App RB) -->
+
+
+
+  <div class="driver-card rb">
+
+    <div class="driver-info">
+
+      <img src="france-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Isack <strong>Hadjar</strong></div>
+
+      <div class="driver-team">Racing Bull</div>
+
+      <div class="driver-number">06</div>
+
+    </div>
+    <img src="red-bull-racing-f1-seeklogo.png" class="team-logo"/>
+    <img src="Isack Hadjar.png" alt="Yuki Tsunoda" class="driver-image" />
+
+  </div>
+
+  <div class="driver-card redbull">
+
+    <div class="driver-info">
+
+      <img src="new-zealand-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Liam <strong>Lawson</strong></div>
+
+      <div class="driver-team">Racing Bull</div>
+
+      <div class="driver-number">30</div>
+
+    </div>
+    <img src="red-bull-racing-f1-seeklogo.png" class="team-logo"/>
+    <img src="Liam Lawson.png" alt="Liam Lawson" class="driver-image" />
+
+  </div>
+  <!-- kicksauber -->
+
+  <div class="driver-card kicksauber">
+
+    <div class="driver-info">
+
+      <img src="germany-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Nico <strong>Hulkenberg</strong></div>
+
+      <div class="driver-team">kicksauber</div>
+
+      <div class="driver-number">27</div>
+
+    </div>
+    <img src="stake.png" class="team-logo"/>
+    <img src="Nico Hulkenberg.png" alt="Nico Hulkenberg" class="driver-image" />
+
+  </div>
+
+
+  <div class="driver-card kicksauber">
+
+    <div class="driver-info">
+
+      <img src="denmark-flag-icon.png" class="country-flag">
+
+      <div class="driver-name">Gabriel  <strong>Bortoleto</strong></div>
+
+      <div class="driver-team">kicksauber</div>
+
+      <div class="driver-number">5</div>
+
+    </div>
+    <img src="stake.png" class="team-logo"/>
+    <img src="Gabriel Bortoleto.png" alt="Gabriel Bortoleto" class="driver-image" />
+
+  </div>
+
+    </div>
+
+  </div>
+  
+
+  </div>
+</main>
+</body>
+</html>

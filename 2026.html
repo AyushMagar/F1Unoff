@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>F1 FanClub - 2026 Schedule</title>
+  <link rel="icon" type="image/png" href="mainlogo.png" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Orbitron:wght@400;500&family=Roboto+Condensed:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Navigation Bar CSS */
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #f5f5f5;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0a0a0f 0%, #121217 50%, #0a0a0f 100%);
+      border-bottom: 2px solid #e10600;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 70px;
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      max-height: 170px;
+      width: auto;
+      display: block;
+    }
+
+    nav {
+      margin-left: 3rem;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: white;
+      flex-grow: 1;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: white;
+      user-select: none;
+    }
+
+    nav ul li i {
+      font-size: 12px;
+      margin-left: 0.25rem;
+      color: white;
+    }
+
+    nav ul li:last-child {
+      cursor: pointer;
+    }
+
+    /* Dropdown */
+    nav ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1a1a1a;
+      border: 1px solid #e10600;
+      border-radius: 6px;
+      padding: 0.5rem 0;
+      list-style: none;
+      min-width: 180px;
+      z-index: 1000;
+    }
+
+    nav ul li .dropdown li {
+      padding: 0.5rem 1rem;
+      color: #fff;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    nav ul li .dropdown li:hover {
+      background: #e10600;
+    }
+
+    nav ul li:hover .dropdown {
+      display: block;
+    }
+
+    /* Auth Buttons */
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-left: auto; 
+    }
+
+    .auth-buttons .btn {
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-family: 'Exo 2', sans-serif;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .auth-buttons .signin-btn {
+      background: transparent;
+      color: #e10600;
+      border: 2px solid #e10600;
+    }
+
+    .auth-buttons .signin-btn:hover {
+      background: #e10600;
+      color: #fff;
+    }
+
+    .auth-buttons .signup-btn {
+      background: #e10600;
+      color: #fff;
+    }
+
+    .auth-buttons .signup-btn:hover {
+      background: #b50500;
+    }
+
+    /* Main content */
+    main {
+      padding: 2rem;
+    }
+
+    main h1 {
+      color: #e10600;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      border-bottom: 2px solid #e10600;
+      padding-bottom: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    table, th, td {
+      border: 1px solid #e10600;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #1a1a1a;
+    }
+
+    tr:nth-child(even) {
+      background-color: #111;
+    }
+    .country-flag {
+  width: 25px;                /* circle diameter — change to 20px if you prefer */
+  height: 25px;               /* must equal width for a perfect circle */
+  display: inline-block;      /* keep it inline with text */
+  vertical-align: middle;
+  border-radius: 50%;         /* circle */
+  overflow: hidden;           /* clip any overflow inside the circle */
+  object-fit: cover;          /* zoom & crop so the image fills the circle */
+  object-position: center;    /* center the crop */
+  box-sizing: border-box;     /* include any border in size */
+}
+
+
+
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0 1.5rem;
+        height: 60px;
+      }
+      .logo {
+        max-height: 50px;
+      }
+      nav ul {
+        gap: 1rem;
+        font-size: 14px;
+      }
+      .auth-buttons {
+        gap: 0.5rem;
+      }
+      .auth-buttons .btn {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+      }
+      main h1 {
+        font-size: 1.5rem;
+      }
+      table {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="mainlogo.png" alt="F1 Logo" class="logo" onclick="location.href='landingpage.html'"/>
+    </div>
+    <nav>                     
+      <ul>
+        <li>
+          Schedule <i class="fas fa-caret-down"></i>
+          <ul class="dropdown">
+            <li onclick="location.href='2026.html'">Upcomming 2026 Race Calendar</li>
+            <li onclick="location.href='past.html'">Past Results</li>
+          </ul>
+        </li>
+        <li onclick="location.href='Result.html'">
+          Standings
+          
+        </li>
+        <li onclick="location.href='news.html'">
+          News 
+        </li>
+        <li onclick="location.href='drivers.html'">
+          Drivers
+        <li>
+          Teams 
+        </li>
+        
+      </ul>
+      <div class="auth-buttons">
+        <button onclick="location.href='Login.html'" class="btn signin-btn">Log In</button>
+        <button onclick="location.href='Signup.html'" class="btn signup-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Upcoming 2026 F1 Race Schedule</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Country</th>
+          <th>Venue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>March 6-8</td><td><img src="australia-flag-icon.png" class="country-flag"> Australia</td><td>Melbourne</td></tr>
+        <tr><td>March 13-15</td><td><img src="china-flag-icon.png" class="country-flag"> China</td><td>Shanghai (Sprint)</td></tr>
+        <tr><td>March 27-29</td><td><img src="japan-flag-icon.png" class="country-flag"> Japan</td><td>Suzuka</td></tr>
+        <tr><td>April 10-12</td><td><img src="bahrain-flag-icon.png" class="country-flag"> Bahrain</td><td>Sakhir</td></tr>
+        <tr><td>April 17-19</td><td><img src="saudi-arabia-flag-icon.png" class="country-flag"> Saudi Arabia</td><td>Jeddah</td></tr>
+        <tr><td>May 1-3</td><td><img src="united-states-flag-icon.png" class="country-flag"> USA</td><td>Miami (Sprint)</td></tr>
+        <tr><td>May 22-24</td><td><img src="canada-flag-icon.png" class="country-flag"> Canada</td><td>Montreal (Sprint)</td></tr>
+        <tr><td>June 5-7</td><td><img src="monaco-flag-icon.png" class="country-flag"> Monaco</td><td>Monaco</td></tr>
+        <tr><td>June 12-14</td><td><img src="spain-country-flag-icon.png" class="country-flag"> Spain</td><td>Barcelona-Catalunya</td></tr>
+        <tr><td>June 26-28</td><td><img src="australia-flag-icon.png" class="country-flag"> Austria</td><td>Spielberg</td></tr>
+        <tr><td>July 3-5</td><td><img src="united-kingdom-flag-icon.png" class="country-flag"> Great Britain</td><td>Silverstone (Sprint)</td></tr>
+        <tr><td>July 17-19</td><td><img src="belgium-flag-icon.png" class="country-flag"> Belgium</td><td>Spa-Francorchamps</td></tr>
+        <tr><td>July 24-26</td><td><img src="hungary-flag-icon.png" class="country-flag"> Hungary</td><td>Budapest</td></tr>
+        <tr><td>August 21-23</td><td><img src="netherlands-flag-icon.png" class="country-flag"> Netherlands</td><td>Zandvoort (Sprint)</td></tr>
+        <tr><td>September 4-6</td><td><img src="italy-flag-icon.png" class="country-flag"> Italy</td><td>Monza</td></tr>
+        <tr><td>September 11-13</td><td><img src="spain-country-flag-icon.png" class="country-flag"> Spain</td><td>Madrid*</td></tr>
+        <tr><td>September 24-26</td><td><img src="azerbaijan-flag-icon.png" class="country-flag"> Azerbaijan</td><td>Baku</td></tr>
+        <tr><td>October 9-11</td><td><img src="singapore-flag-icon.png" class="country-flag"> Singapore</td><td>Singapore (Sprint)</td></tr>
+        <tr><td>October 23-25</td><td><img src="united-states-flag-icon.png" class="country-flag"> USA</td><td>Austin</td></tr>
+        <tr><td>October 30 - November 1</td><td><img src="mexico-flag-icon.png" class="country-flag"> Mexico</td><td>Mexico City</td></tr>
+        <tr><td>November 6-8</td><td><img src="brazil-flag-icon.png" class="country-flag">Brazil</td><td>Sao Paulo</td></tr>
+        <tr><td>November 19-21</td><td><img src="united-states-flag-icon.png" class="country-flag"> USA</td><td>Las Vegas</td></tr>
+        <tr><td>November 27-29</td><td><img src="qatar-flag-icon.png" class="country-flag"> Qatar</td><td>Lusail</td></tr>
+        <tr><td>December 4-6</td><td><img src="united-arab-emirates-flag-icon.png" class="country-flag"> Abu Dhabi</td><td>Yas Marina</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

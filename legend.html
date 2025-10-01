@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>F1 FanClub - Legendary Drivers</title>
+<link rel="icon" type="image/png" href="mainlogo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Roboto+Condensed:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #0d0d0d;
+    color: #f5f5f5;
+    overflow-x: hidden;
+  }
+
+  header {
+    background: linear-gradient(90deg, #0a0a0f 0%, #121217 50%, #0a0a0f 100%);
+    border-bottom: 2px solid #e10600;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      max-height: 170px;
+      width: auto;
+      display: block;
+    }
+
+
+  nav {
+    margin-left: 3rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul li i {
+    font-size: 12px;
+    margin-left: 0.25rem;
+  }
+
+  nav ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a1a;
+    border: 1px solid #e10600;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    min-width: 180px;
+  }
+
+  nav ul li:hover .dropdown {
+    display: block;
+  }
+
+  nav ul li .dropdown li:hover {
+    background: #e10600;
+  }
+
+  .auth-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .auth-buttons .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-family: 'Exo 2', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .signin-btn {
+    background: transparent;
+    color: #e10600;
+    border: 2px solid #e10600;
+  }
+
+  .signin-btn:hover {
+    background: #e10600;
+    color: #fff;
+  }
+
+  .signup-btn {
+    background: #e10600;
+    color: #fff;
+  }
+
+  .signup-btn:hover {
+    background: #b50500;
+  }
+
+  .section-title {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #e10600;
+    margin: 2rem 0;
+    text-shadow: 0 0 12px #e10600;
+  }
+
+  .drivers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem 2rem;
+  }
+
+  .driver-card {
+    background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+    border: 2px solid #e10600;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+
+  .driver-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(225, 6, 0, 0.7);
+  }
+
+  .driver-card img {
+    width: 50%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.5s, filter 0.5s;
+    border-radius: 20px 0 0 20px;
+  }
+
+  .driver-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+
+  .driver-info {
+    padding: 2rem;
+    width: 50%;
+  }
+
+  .driver-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #e10600;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px #e10600;
+  }
+
+  .driver-bio {
+    font-size: 18px;
+    color: #ddd;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 1024px) {
+    .driver-card {
+      flex-direction: column;
+    }
+    .driver-card img,
+    .driver-info {
+      width: 100%;
+    }
+    .driver-card img {
+      height: 400px;
+      border-radius: 25px 25px 0 0;
+    }
+    .driver-info {
+      padding: 1.5rem;
+    }
+    .driver-name {
+      font-size: 28px;
+    }
+    .driver-bio {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .driver-card img {
+      height: 300px;
+    }
+    .driver-name {
+      font-size: 24px;
+    }
+    .driver-bio {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+          <img src="mainlogo.png" alt="F1 Logo" class="logo" onclick="location.href='landingpage.html'"/>
+        </div>
+        <nav>                     
+          <ul>
+            <li>
+              Schedule <i class="fas fa-caret-down"></i>
+              <ul class="dropdown">
+                <li onclick="location.href='2026.html'">Upcomming 2026 Race Calendar</li>
+                <li onclick="location.href='past.html'">Past Results</li>
+              </ul>
+            </li>
+            <li onclick="location.href='Result.html'">
+              Standings
+              
+            </li>
+            <li onclick="location.href='news.html'">
+              News 
+            </li>
+            <li onclick="location.href='drivers.html'">
+              Drivers
+            <li>
+              Teams 
+            </li>
+            
+          </ul>
+          <div class="auth-buttons">
+            <button onclick="location.href='Login.html'" class="btn signin-btn">Log In</button>
+            <button onclick="location.href='Signup.html'" class="btn signup-btn">Sign Up</button>
+          </div>
+        </nav>
+      </header>
+<h1 class="section-title">Legendary F1 Drivers</h1>
+
+<div class="driver-card">
+    <img src="67.png" alt="Alain Prost">
+    <div class="driver-info">
+      <div class="driver-name">Alain Prost</div>
+      <div class="driver-bio">
+        Known as "The Professor", Prost’s calculated and intelligent driving earned him four world championships. He was admired for his consistency and strategic racing approach.
+      </div>
+    </div>
+  </div>
+
+<div class="drivers-container">
+  <div class="driver-card">
+    <img src="Michael Schumacher - Wikipedia.png" alt="Michael Schumacher">
+    <div class="driver-info">
+      <div class="driver-name">Michael Schumacher</div>
+      <div class="driver-bio">
+        Michael Schumacher is a seven-time world champion known for his relentless focus and technical mastery. He dominated the 1990s and early 2000s, transforming Ferrari into an unstoppable force in Formula 1.
+      </div>
+    </div>
+  </div>
+
+  <div class="driver-card">
+    <img src="Ayrton Senna.png" alt="Ayrton Senna">
+    <div class="driver-info">
+      <div class="driver-name">Ayrton Senna</div>
+      <div class="driver-bio">
+        Senna is remembered for his extraordinary skill in wet conditions, fearless overtakes, and unmatched qualifying speed. His passion and intensity made him a legendary figure in Formula 1 history.
+      </div>
+    </div>
+  </div>
+
+  <div class="driver-card">
+    <img src="Manuel Fangio.png" alt="Juan Manuel Fangio">
+    <div class="driver-info">
+      <div class="driver-name">Juan Manuel Fangio</div>
+      <div class="driver-bio">
+        Fangio dominated the 1950s with tactical brilliance and smooth driving. Winning five world titles, he set a benchmark for all future champions in Formula 1.
+      </div>
+    </div>
+  </div>
+
+  <div class="driver-card">
+    <img src="Opinion_ Hamilton's defeat simply adds to the legend _ Top Gear.jpg" alt="Lewis Hamilton">
+    <div class="driver-info">
+      <div class="driver-name">Lewis Hamilton</div>
+      <div class="driver-bio">
+        Lewis Hamilton is celebrated for his speed, adaptability, and consistency. With seven world titles, he has broken records and become a global ambassador for the sport, known both on and off the track.
+      </div>
+    </div>
+  </div>
+
+ 
+
+</div>
+
+</body>
+</html>
